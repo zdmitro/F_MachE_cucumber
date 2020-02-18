@@ -1,6 +1,7 @@
 package asserts;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pageObjects.SelectBatteryAndPowertrainPage;
 import pageObjects.SelectMachEModelPage;
@@ -19,5 +20,10 @@ public class SelectBatteryAndPowertrainAssert  {
         Assert.assertEquals("NOW SELECT YOUR BATTERY AND POWERTRAIN", this.selectBatteryAndPowertrainPage.readText(this.selectBatteryAndPowertrainPage.getTagSelectBatteryAndPowertrain()));
         List<WebElement> elements = getDriver().findElements(this.selectBatteryAndPowertrainPage.getSelectMSRP());
         Assert.assertEquals("$43,895", elements.get(0).getText());
+    }
+
+    public void assertValidateThatBatteryAndPowertrainPageIsOpenedWithPricePrice(String expectedPrice) {
+        String actualPrice = getDriver().findElement(By.xpath("//*[text()='" + expectedPrice + "']")).getText();
+        Assert.assertEquals(expectedPrice, actualPrice);
     }
 }
