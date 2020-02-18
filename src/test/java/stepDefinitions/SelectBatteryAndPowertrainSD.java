@@ -24,4 +24,9 @@ public class SelectBatteryAndPowertrainSD {
     public void assertThatBatteryAndPowertrainPageIsOpenedForSelectTrim() {
         this.selectBatteryAndPowertrainAssert.assertThatBatteryAndPowertrainPageIsOpenedForSelectTrim();
     }
+
+    @Then("^Validate that Battery and Powertrain Page is Opened with price (.+)$")
+    public void validateThatBatteryAndPowertrainPageIsOpenedWithPricePrice(String price) {
+        this.selectBatteryAndPowertrainAssert.assertValidateThatBatteryAndPowertrainPageIsOpenedWithPricePrice(price);
+    }
 }

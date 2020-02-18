@@ -8,6 +8,7 @@ public class SelectMachEModelPage extends BasePage {
 
 //    Select Elements by html tag hs
     private final By tagH2 = By.tagName("h2");
+    private final By headerTagH2 = By.className("ProductTile__Header-sc-8r7rba-0");
 
     private final By productContainer = By.className("ProductTileSection__ProductTileSectionInner-sc-1a04xx1-8");
     private final By productCotainerItem = By.className("ProductTileSection__ProductTileFullWidthWrapper-sc-1a04xx1-1");
@@ -33,6 +34,10 @@ public class SelectMachEModelPage extends BasePage {
 
     public By getTagSpan() {
         return tagSpan;
+    }
+
+    public By getHeaderTagH2() {
+        return headerTagH2;
     }
 
     public By getProductContainer() {

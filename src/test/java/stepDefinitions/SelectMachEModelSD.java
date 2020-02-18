@@ -5,6 +5,8 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pageObjects.SelectBatteryAndPowertrainPage;
 import pageObjects.SelectMachEModelPage;
@@ -50,8 +52,13 @@ public class SelectMachEModelSD {
 
     @When("^Select button for (.+) trim is clicked$")
     public void selectButtonForTrimTrimIsClicked(String trim) {
-        List<WebElement> itemsByClassName = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getBtnSelect());
-//        itemsByClassName.stream()
-//                .filter(e -> trim.equals(e.getText()))
+        List<WebElement> itemsByClassName = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getProductCotainerItem());
+        String h2Text = itemsByClassName.get(0).findElement(this.selectMachEModelPage.getHeaderTagH2()).getText();
+
+        WebElement webElement = itemsByClassName.stream()
+                .filter(e -> trim.equals(e.findElement(this.selectMachEModelPage.getHeaderTagH2()).getText()))
+                .findFirst()
+                .get();
+        webElement.findElement(this.selectMachEModelPage.getBtnSelect()).click();
     }
 }
