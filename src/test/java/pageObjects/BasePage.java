@@ -77,7 +77,7 @@ public abstract class BasePage {
 
     //read text
     public String readText(By elementBy) {
-//        waitVisibility(elementBy);
+        waitVisibility(elementBy);
         return SharedSD.getDriver().findElement(elementBy).getText();
     }
 
