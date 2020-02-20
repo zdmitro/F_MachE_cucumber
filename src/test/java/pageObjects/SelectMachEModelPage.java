@@ -25,11 +25,11 @@ public class SelectMachEModelPage extends BasePage {
 
     private final By coockiesBanner = By.id("onetrust-banner-sdk");
 
+    private final By btnNext = By.className("ProductTileSection__TileButtonNext-sc-1a04xx1-6");
+
     public By getTagH2() {
         return tagH2;
     }
-//    private final By linkMustangMachE = By.
-
 
     public By getHeaderSelect() {
         return headerSelect;
@@ -81,6 +81,10 @@ public class SelectMachEModelPage extends BasePage {
 
     public By getCoockiesBanner() {
         return coockiesBanner;
+    }
+
+    public By getBtnNext() {
+        return btnNext;
     }
 }
 

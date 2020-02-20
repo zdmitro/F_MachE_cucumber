@@ -3,6 +3,7 @@ package asserts;
 import expected.SelectBatteryAndPowertrainExp;
 import expected.SelectMachEModelExp;
 import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageObjects.SelectMachEModelPage;
@@ -19,19 +20,12 @@ public class SelectMachEModelAssert {
 
     public void assertByUrlSelectMachEModelPageIsOpened() {
 
-        if(this.selectMachEModelPage.isElementDisplayed(this.selectMachEModelPage.getCoockiesBanner())) {
+        try {
             this.selectMachEModelPage.click(this.selectMachEModelPage.getCoockiesCloseButton());
+        } catch (NoSuchElementException e) {
+            System.out.println("Cookies bar not found!");
         }
-
         Assert.assertEquals(getDriver().getCurrentUrl(), pr.getUrl());
-    }
-
-    public void assertByHeaderSelectMachEModelPageIsOpened() throws InterruptedException {
-        Thread.sleep(4000);
-        Assert.assertTrue(this.selectMachEModelPage.isElementDisplayed(this.selectMachEModelPage.getHeaderSelect()));
-//        Assert.assertTrue(this.selectMachEModelPage.isElementDisplayed(this.selectMachEModelPage));
-//        Assert.assertEquals("SELECT", this.selectMachEModelPage.readText(this.selectMachEModelPage.getHeaderSelect()));
-
     }
 
     /**

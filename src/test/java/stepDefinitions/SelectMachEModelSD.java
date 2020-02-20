@@ -13,6 +13,9 @@ import pageObjects.SelectMachEModelPage;
 import utils.PropertiesReader;
 
 import java.util.List;
+import java.util.Optional;
+
+import static java.lang.Thread.sleep;
 
 public class SelectMachEModelSD {
     private final PropertiesReader pr = new PropertiesReader();
@@ -53,12 +56,23 @@ public class SelectMachEModelSD {
     @When("^Select button for (.+) trim is clicked$")
     public void selectButtonForTrimTrimIsClicked(String trim) {
         List<WebElement> itemsByClassName = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getProductCotainerItem());
-        String h2Text = itemsByClassName.get(0).findElement(this.selectMachEModelPage.getHeaderTagH2()).getText();
 
         WebElement webElement = itemsByClassName.stream()
                 .filter(e -> trim.equals(e.findElement(this.selectMachEModelPage.getHeaderTagH2()).getText()))
                 .findFirst()
-                .get();
+                .orElse(null);
+
+        if (webElement == null) {
+            List<WebElement> btnNextList = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getBtnNext());
+            btnNextList.get(0).click();
+            try {
+                sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            itemsByClassName = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getProductCotainerItem());
+            webElement = itemsByClassName.get(itemsByClassName.size() - 1);
+        }
         webElement.findElement(this.selectMachEModelPage.getBtnSelect()).click();
     }
 }
