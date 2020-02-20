@@ -15,6 +15,8 @@ public class SelectBatteryAndPowertrainPage extends BasePage {
 
     private final By selectMSRP = By.className("ProductTile__AttributeValue-sc-8r7rba-14");
 
+    private final By coockiesCloseButton = By.xpath("/html/body/div[7]/div[3]/div/div/div[3]/a");
+
     public void goToSelectBatteryAndPowertrain(String trim) {
 
     }
@@ -26,5 +28,9 @@ public class SelectBatteryAndPowertrainPage extends BasePage {
 
     public By getSelectMSRP() {
         return selectMSRP;
+    }
+
+    public By getCoockiesCloseButton() {
+        return coockiesCloseButton;
     }
 }

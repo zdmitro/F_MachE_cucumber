@@ -21,6 +21,9 @@ public class SelectMachEModelPage extends BasePage {
 
     private final By imgCardCarBackground = By.className("ProductTile__VehicleBackgroundImage-sc-8r7rba-7");
     private final By imgCardCarFront = By.className("ProductTile__VehicleImage-sc-8r7rba-8");
+    private final By coockiesCloseButton = By.xpath("/html/body/div[7]/div[3]/div/div/div[3]/a");
+
+    private final By coockiesBanner = By.id("onetrust-banner-sdk");
 
     public By getTagH2() {
         return tagH2;
@@ -72,7 +75,13 @@ public class SelectMachEModelPage extends BasePage {
         return imgCardCarFront;
     }
 
+    public By getCoockiesCloseButton() {
+        return coockiesCloseButton;
+    }
 
+    public By getCoockiesBanner() {
+        return coockiesBanner;
+    }
 }
 
 

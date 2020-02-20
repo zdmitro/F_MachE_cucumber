@@ -4,6 +4,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utils.PropertiesReader;
 
@@ -17,6 +18,8 @@ public class SharedSD {
         PropertiesReader pr = new PropertiesReader();
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setJavascriptEnabled(true);
+        ChromeOptions ops = new ChromeOptions();
+        ops.addArguments("--disable-notifications");
         System.setProperty("webdriver.chrome.driver", pr.getChromeDriverPass());
         driver = new ChromeDriver();
 
@@ -25,6 +28,7 @@ public class SharedSD {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
         driver.get(pr.getUrl());
+
     }
 
     @After

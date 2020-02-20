@@ -19,6 +19,10 @@ public class SelectMachEModelAssert {
 
     public void assertByUrlSelectMachEModelPageIsOpened() {
 
+        if(this.selectMachEModelPage.isElementDisplayed(this.selectMachEModelPage.getCoockiesBanner())) {
+            this.selectMachEModelPage.click(this.selectMachEModelPage.getCoockiesCloseButton());
+        }
+
         Assert.assertEquals(getDriver().getCurrentUrl(), pr.getUrl());
     }
 
