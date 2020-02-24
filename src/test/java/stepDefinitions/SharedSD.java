@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -24,7 +25,10 @@ public class SharedSD {
         driver = new ChromeDriver();
 
         driver.manage().deleteAllCookies();
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
+        Dimension d = new Dimension(960,1080);
+        //Resize current window to the set dimension
+        driver.manage().window().setSize(d);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
         driver.get(pr.getUrl());

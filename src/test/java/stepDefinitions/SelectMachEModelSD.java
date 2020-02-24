@@ -48,9 +48,9 @@ public class SelectMachEModelSD {
         this.selectMachEModelAssert.assertThatEachCardContainAllTheElements();
     }
 
-    @Then("^Validate that text is present and correct in the body of a card$")
-    public void assertThatTextIsPresentAndCorrectInTheBodyOfACard() {
-        this.selectMachEModelAssert.assertThatTextIsPresentAndCorrectInTheBodyOfACard();
+    @Then("^Validate that text is present and correct in the body of SELECT card$")
+    public void assertThatTextIsPresentAndCorrectInTheBodyOfSELECTCard() {
+        this.selectMachEModelAssert.assertThatTextIsPresentAndCorrectInTheBodyOfSelectCard();
     }
 
     @When("^Select button for (.+) trim is clicked$")
@@ -74,5 +74,36 @@ public class SelectMachEModelSD {
             webElement = itemsByClassName.get(itemsByClassName.size() - 1);
         }
         webElement.findElement(this.selectMachEModelPage.getBtnSelect()).click();
+    }
+
+    public void selectItem(String trim, By byClassName, By itemHeader) {
+        List<WebElement> itemsByClassName = this.selectMachEModelPage.getItemsByClassName(byClassName);
+
+        WebElement webElement = itemsByClassName.stream()
+                .filter(e -> trim.equals(e.findElement(itemHeader).getText()))
+                .findFirst()
+                .orElse(null);
+
+    }
+
+    @Then("^Validate that text is present and correct in the body of PREMIUM card$")
+    public void assertThatTextIsPresentAndCorrectInTheBodyOfPREMIUMCard() {
+        this.selectMachEModelAssert.assertThatTextIsPresentAndCorrectInTheBodyOfPREMIUMCard();
+    }
+
+    @Then("^Validate that text is present and correct in the body of CALIFORNIA RT 1 EDITION card$")
+    public void assertThatTextIsPresentAndCorrectInTheBodyOfCALIFORNIARTEDITIONCard() {
+        this.selectMachEModelAssert.assertThatTextIsPresentAndCorrectInTheBodyOfCALIFORNIARTEDITIONCard();
+    }
+
+    @Then("^Validate that text is present and correct in the body of GT card$")
+    public void assertThatTextIsPresentAndCorrectInTheBodyOfGTCard() {
+        this.selectMachEModelAssert.assertThatTextIsPresentAndCorrectInTheBodyOfGTCard();
+    }
+
+    @Then("^Validate that all elements are present on the top bar$")
+    public void validateThatAllElementsArePresentOnTheTopBar() {
+        this.selectMachEModelAssert.validateThatAllElementsArePresentOnTheTopBar();
+
     }
 }

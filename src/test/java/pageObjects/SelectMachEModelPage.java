@@ -6,14 +6,18 @@ public class SelectMachEModelPage extends BasePage {
 
     private final By headerSelect = By.xpath("/html/body/div[2]/div[2]/div/div[1]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div/h2");
 
-//    Select Elements by html tag hs
+//    Select Elements by html tag h2
     private final By tagH2 = By.tagName("h2");
+    //headerTagH2 is item header (Trim name shown in capitals inside item)
     private final By headerTagH2 = By.className("ProductTile__Header-sc-8r7rba-0");
 
     private final By productContainer = By.className("ProductTileSection__ProductTileSectionInner-sc-1a04xx1-8");
+    //These are the trim cards
     private final By productCotainerItem = By.className("ProductTileSection__ProductTileFullWidthWrapper-sc-1a04xx1-1");
 
     private final By tagSpan = By.tagName("span");
+    private final By tagH3 = By.tagName("h3");
+    private final By tagLi  = By.tagName("li");
     private final By btnCardToFullScreen = By.className("ProductTileSection__ProductTileExpand-sc-1a04xx1-0");
     private final By btnSelect = By.className("Button__ButtonCommon-sc-5scy24-0");
     private final By headerTrim = By.className("ProductTile__Header-sc-8r7rba-0");
@@ -85,6 +89,14 @@ public class SelectMachEModelPage extends BasePage {
 
     public By getBtnNext() {
         return btnNext;
+    }
+
+    public By getTagH3() {
+        return tagH3;
+    }
+
+    public By getTagLi() {
+        return tagLi;
     }
 }
 
