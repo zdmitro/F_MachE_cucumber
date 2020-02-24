@@ -68,11 +68,11 @@ public class SelectMachEModelAssert {
     }
 
     public void assertCardsArePresentInTheBody(int count) {
-        Assert.assertEquals(count, this.selectMachEModelPage.getItemsFromContainer(this.selectMachEModelPage.getProductContainer(), this.selectMachEModelPage.getProductCotainerItem()).size());
+        Assert.assertEquals(count, this.selectMachEModelPage.getItemsFromContainer(this.selectMachEModelPage.getProductContainer(), this.selectMachEModelPage.getProductContainerItem()).size());
     }
 
     public void assertThatEachCardContainAllTheElements() {
-        List<WebElement> itemsFromContainer = this.selectMachEModelPage.getItemsFromContainer(this.selectMachEModelPage.getProductContainer(), this.selectMachEModelPage.getProductCotainerItem());
+        List<WebElement> itemsFromContainer = this.selectMachEModelPage.getItemsFromContainer(this.selectMachEModelPage.getProductContainer(), this.selectMachEModelPage.getProductContainerItem());
         itemsFromContainer.forEach(e -> {
             System.out.println(e);
             e.findElement(this.selectMachEModelPage.getImgCardCarBackground()).isDisplayed();
@@ -159,7 +159,7 @@ public class SelectMachEModelAssert {
     }
 
     public void validateThatAllElementsArePresentOnTheTopBar() {
-        List<WebElement> itemsFromContainer = this.selectMachEModelPage.getItemsFromContainer(this.selectMachEModelPage.getProductContainer(), this.selectMachEModelPage.getProductCotainerItem());
+        List<WebElement> itemsFromContainer = this.selectMachEModelPage.getItemsFromContainer(this.selectMachEModelPage.getProductContainer(), this.selectMachEModelPage.getProductContainerItem());
 
     }
 }

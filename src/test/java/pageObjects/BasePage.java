@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -27,6 +28,16 @@ public abstract class BasePage {
     public void waitVisibility(By elementBy) {
         WebDriverWait wait = new WebDriverWait(SharedSD.getDriver(), TIMEOUT, POLLING);
         wait.until(ExpectedConditions.visibilityOfElementLocated(elementBy));
+    }
+
+    public void waitElementToBeClickable(By elementBy) {
+        WebDriverWait wait = new WebDriverWait(SharedSD.getDriver(), TIMEOUT, POLLING);
+        wait.until(ExpectedConditions.elementToBeClickable(elementBy));
+    }
+
+    public void clickByJSE(By elementBy) {
+        JavascriptExecutor executor = (JavascriptExecutor)SharedSD.getDriver();
+        executor.executeScript("arguments[0].click();", elementBy);
     }
 
     public boolean isElementDisplayed(By elementBy) {
@@ -159,8 +170,44 @@ public abstract class BasePage {
     }
 
     public List<WebElement> getItemsByClassName(By elementBy) {
-        waitVisibility(elementBy);
+        //waitVisibility(elementBy);
         return SharedSD.getDriver().findElements(elementBy);
+    }
+
+    public void selectItem(String trim, By elementByClassName, By itemHeader, By btnSelect, By btnNext) {
+        List<WebElement> itemsByClassName = this.getItemsByClassName(elementByClassName);
+
+        WebElement webElement = itemsByClassName.stream()
+                .filter(e -> trim.equals(e.findElement(itemHeader).getText()))
+                .findFirst()
+                .orElse(null);
+
+        if (webElement == null) {
+            System.out.println(webElement);
+            while (webElement == null) {
+                List<WebElement> btnNextList = this.getItemsByClassName(btnNext);
+                btnNextList.get(0).click();
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                itemsByClassName = this.getItemsByClassName(elementByClassName);
+
+                webElement = itemsByClassName.stream()
+                        .filter(e -> trim.equals(e.findElement(itemHeader).getText()))
+                        .findFirst()
+                        .orElse(null);
+            }
+
+        }
+
+        WebElement element = webElement.findElement(btnSelect);
+        ((JavascriptExecutor) SharedSD.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        System.out.println(element.getText());
+        element.click();
     }
 
 }

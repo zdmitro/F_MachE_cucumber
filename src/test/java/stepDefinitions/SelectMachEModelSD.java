@@ -55,35 +55,34 @@ public class SelectMachEModelSD {
 
     @When("^Select button for (.+) trim is clicked$")
     public void selectButtonForTrimTrimIsClicked(String trim) {
-        List<WebElement> itemsByClassName = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getProductCotainerItem());
 
-        WebElement webElement = itemsByClassName.stream()
-                .filter(e -> trim.equals(e.findElement(this.selectMachEModelPage.getHeaderTagH2()).getText()))
-                .findFirst()
-                .orElse(null);
+        this.selectMachEModelPage.selectItem(
+                trim,
+                this.selectMachEModelPage.getProductContainerItem(),
+                this.selectMachEModelPage.getHeaderTagH2(),
+                this.selectMachEModelPage.getBtnSelect(),
+                this.selectMachEModelPage.getBtnNext()
+        );
 
-        if (webElement == null) {
-            List<WebElement> btnNextList = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getBtnNext());
-            btnNextList.get(0).click();
-            try {
-                sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            itemsByClassName = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getProductCotainerItem());
-            webElement = itemsByClassName.get(itemsByClassName.size() - 1);
-        }
-        webElement.findElement(this.selectMachEModelPage.getBtnSelect()).click();
-    }
-
-    public void selectItem(String trim, By byClassName, By itemHeader) {
-        List<WebElement> itemsByClassName = this.selectMachEModelPage.getItemsByClassName(byClassName);
-
-        WebElement webElement = itemsByClassName.stream()
-                .filter(e -> trim.equals(e.findElement(itemHeader).getText()))
-                .findFirst()
-                .orElse(null);
-
+//        List<WebElement> itemsByClassName = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getProductCotainerItem());
+//
+//        WebElement webElement = itemsByClassName.stream()
+//                .filter(e -> trim.equals(e.findElement(this.selectMachEModelPage.getHeaderTagH2()).getText()))
+//                .findFirst()
+//                .orElse(null);
+//
+//        if (webElement == null) {
+//            List<WebElement> btnNextList = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getBtnNext());
+//            btnNextList.get(0).click();
+//            try {
+//                sleep(2000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            itemsByClassName = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getProductCotainerItem());
+//            webElement = itemsByClassName.get(itemsByClassName.size() - 1);
+//        }
+//        webElement.findElement(this.selectMachEModelPage.getBtnSelect()).click();
     }
 
     @Then("^Validate that text is present and correct in the body of PREMIUM card$")

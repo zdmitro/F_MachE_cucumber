@@ -13,7 +13,7 @@ public class SelectMachEModelPage extends BasePage {
 
     private final By productContainer = By.className("ProductTileSection__ProductTileSectionInner-sc-1a04xx1-8");
     //These are the trim cards
-    private final By productCotainerItem = By.className("ProductTileSection__ProductTileFullWidthWrapper-sc-1a04xx1-1");
+    private final By productContainerItem = By.className("ProductTileSection__ProductTileFullWidthWrapper-sc-1a04xx1-1");
 
     private final By tagSpan = By.tagName("span");
     private final By tagH3 = By.tagName("h3");
@@ -51,8 +51,8 @@ public class SelectMachEModelPage extends BasePage {
         return productContainer;
     }
 
-    public By getProductCotainerItem() {
-        return productCotainerItem;
+    public By getProductContainerItem() {
+        return productContainerItem;
     }
 
     public By getBtnCardToFullScreen() {
