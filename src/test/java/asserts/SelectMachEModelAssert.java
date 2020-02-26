@@ -22,6 +22,11 @@ public class SelectMachEModelAssert {
 
         try {
             this.selectMachEModelPage.click(this.selectMachEModelPage.getCoockiesCloseButton());
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         } catch (NoSuchElementException e) {
             System.out.println("Cookies bar not found!");
         }
@@ -51,9 +56,9 @@ public class SelectMachEModelAssert {
         Assert.assertEquals(spanElements.get(6).getText(),"Available");
         Assert.assertEquals(spanElements.get(7).getText(),"Early 2021");
         Assert.assertEquals(spanElements.get(10).getText(),"Not Including $7,500 Federal Tax Credit");
-        Assert.assertEquals(h3Elements.get(3).getText(),"Key Features");
-        Assert.assertEquals(liElements.get(1).getText(),"18\" Aluminum Wheels");
-        Assert.assertEquals(liElements.get(2).getText(),"Next Generation SYNC® with Connected Navigation");
+        Assert.assertEquals(this.selectMachEModelPage.goToWebElementAndReadText(h3Elements.get(3)),"Key Features");
+        Assert.assertEquals(this.selectMachEModelPage.goToWebElementAndReadText(liElements.get(2)),"18\" Aluminum Wheels");
+        Assert.assertEquals(this.selectMachEModelPage.goToWebElementAndReadText(liElements.get(3)),"Next Generation SYNC® with Connected Navigation");
         Assert.assertEquals(liElements.get(3).getText(),"Phone as a Key");
         Assert.assertEquals(liElements.get(4).getText(),"10.2\" Digital Cluster & 15.5\" Touch Screen");
         Assert.assertEquals(liElements.get(5).getText(),"Ford Co-Pilot360™ 2.0 + Co-Pilot 360™ Assist 2.0");

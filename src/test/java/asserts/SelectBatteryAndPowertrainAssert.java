@@ -2,9 +2,11 @@ package asserts;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import pageObjects.SelectBatteryAndPowertrainPage;
 import pageObjects.SelectMachEModelPage;
+import stepDefinitions.SharedSD;
 import utils.PropertiesReader;
 
 import java.util.List;
@@ -23,6 +25,7 @@ public class SelectBatteryAndPowertrainAssert  {
     }
 
     public void assertValidateThatBatteryAndPowertrainPageIsOpenedWithPricePrice(String expectedPrice) {
+//        ((JavascriptExecutor) SharedSD.getDriver()).executeScript("arguments[0].scrollIntoView(true);", By.xpath("//*[text()='" + expectedPrice + "']"));
         String actualPrice = getDriver().findElement(By.xpath("//*[text()='" + expectedPrice + "']")).getText();
         Assert.assertEquals(expectedPrice, actualPrice);
     }

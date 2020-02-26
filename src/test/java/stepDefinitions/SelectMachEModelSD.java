@@ -64,6 +64,7 @@ public class SelectMachEModelSD {
                 this.selectMachEModelPage.getBtnNext()
         );
 
+
 //        List<WebElement> itemsByClassName = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getProductCotainerItem());
 //
 //        WebElement webElement = itemsByClassName.stream()

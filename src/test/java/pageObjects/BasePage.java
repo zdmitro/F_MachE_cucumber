@@ -92,6 +92,16 @@ public abstract class BasePage {
         return SharedSD.getDriver().findElement(elementBy).getText();
     }
 
+    public String goToByElementAndReadText(By elementBy) {
+        ((JavascriptExecutor) SharedSD.getDriver()).executeScript("arguments[0].scrollIntoView(true);", elementBy);
+        return SharedSD.getDriver().findElement(elementBy).getText();
+    }
+
+    public String goToWebElementAndReadText(WebElement webElement) {
+        ((JavascriptExecutor) SharedSD.getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
+        return webElement.getText();
+    }
+
     //scrolls
     public void scrollByValues(String from, String to) {
         JavascriptExecutor js = (JavascriptExecutor) SharedSD.getDriver();
