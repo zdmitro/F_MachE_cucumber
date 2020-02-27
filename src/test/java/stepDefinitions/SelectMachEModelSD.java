@@ -62,7 +62,9 @@ public class SelectMachEModelSD {
                 this.selectMachEModelPage.getHeaderTagH2(),
                 this.selectMachEModelPage.getBtnSelect(),
                 this.selectMachEModelPage.getBtnNext()
+
         );
+
 
 
 //        List<WebElement> itemsByClassName = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getProductCotainerItem());

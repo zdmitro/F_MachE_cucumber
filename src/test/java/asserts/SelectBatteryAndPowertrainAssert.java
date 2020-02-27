@@ -1,5 +1,6 @@
 package asserts;
 
+import gherkin.lexer.Th;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -26,7 +27,20 @@ public class SelectBatteryAndPowertrainAssert  {
 
     public void assertValidateThatBatteryAndPowertrainPageIsOpenedWithPricePrice(String expectedPrice) {
 //        ((JavascriptExecutor) SharedSD.getDriver()).executeScript("arguments[0].scrollIntoView(true);", By.xpath("//*[text()='" + expectedPrice + "']"));
-        String actualPrice = getDriver().findElement(By.xpath("//*[text()='" + expectedPrice + "']")).getText();
-        Assert.assertEquals(expectedPrice, actualPrice);
+//        String actualPrice = getDriver().findElement(By.xpath("//*[text()='" + expectedPrice + "']")).getText();
+        List<WebElement> elements = getDriver().findElements(this.selectBatteryAndPowertrainPage.getAttributeValue());
+
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+//        WebElement element = elements.get(5);
+
+//        ((JavascriptExecutor) SharedSD.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+
+        Assert.assertEquals(expectedPrice, elements.get(0).getText());
     }
 }

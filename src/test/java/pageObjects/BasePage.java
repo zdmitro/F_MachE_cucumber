@@ -185,6 +185,13 @@ public abstract class BasePage {
     }
 
     public void selectItem(String trim, By elementByClassName, By itemHeader, By btnSelect, By btnNext) {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         List<WebElement> itemsByClassName = this.getItemsByClassName(elementByClassName);
 
         WebElement webElement = itemsByClassName.stream()
@@ -214,10 +221,18 @@ public abstract class BasePage {
 
         }
 
-        WebElement element = webElement.findElement(btnSelect);
-        ((JavascriptExecutor) SharedSD.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
-        System.out.println(element.getText());
-        element.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+//        WebElement element = webElement.findElement(btnSelect);
+        ((JavascriptExecutor) SharedSD.getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement.findElement(btnSelect));
+//        System.out.println(element.getText());
+        webElement.findElement(btnSelect).click();
     }
+
+
 
 }

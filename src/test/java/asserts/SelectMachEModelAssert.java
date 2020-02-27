@@ -55,14 +55,14 @@ public class SelectMachEModelAssert {
         Assert.assertEquals(spanElements.get(4).getText(),"$43,895");
         Assert.assertEquals(spanElements.get(6).getText(),"Available");
         Assert.assertEquals(spanElements.get(7).getText(),"Early 2021");
-        Assert.assertEquals(spanElements.get(10).getText(),"Not Including $7,500 Federal Tax Credit");
+        Assert.assertEquals(this.selectMachEModelPage.goToWebElementAndReadText(spanElements.get(10)),"Not Including $7,500 Federal Tax Credit");
         Assert.assertEquals(this.selectMachEModelPage.goToWebElementAndReadText(h3Elements.get(3)),"Key Features");
         Assert.assertEquals(this.selectMachEModelPage.goToWebElementAndReadText(liElements.get(2)),"18\" Aluminum Wheels");
         Assert.assertEquals(this.selectMachEModelPage.goToWebElementAndReadText(liElements.get(3)),"Next Generation SYNC® with Connected Navigation");
-        Assert.assertEquals(liElements.get(3).getText(),"Phone as a Key");
-        Assert.assertEquals(liElements.get(4).getText(),"10.2\" Digital Cluster & 15.5\" Touch Screen");
-        Assert.assertEquals(liElements.get(5).getText(),"Ford Co-Pilot360™ 2.0 + Co-Pilot 360™ Assist 2.0");
-        Assert.assertEquals(liElements.get(6).getText(),"LED Lights and Sequential Rear Turn Signals");
+        Assert.assertEquals(this.selectMachEModelPage.goToWebElementAndReadText(liElements.get(4)),"Phone as a Key");
+        Assert.assertEquals(this.selectMachEModelPage.goToWebElementAndReadText(liElements.get(5)),"10.2\" Digital Cluster & 15.5\" Touch Screen");
+        Assert.assertEquals(this.selectMachEModelPage.goToWebElementAndReadText(liElements.get(6)),"Ford Co-Pilot360™ 2.0 + Co-Pilot 360™ Assist 2.0");
+        Assert.assertEquals(this.selectMachEModelPage.goToWebElementAndReadText(liElements.get(7)),"LED Lights and Sequential Rear Turn Signals");
 
     }
 
