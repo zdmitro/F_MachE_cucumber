@@ -30,15 +30,16 @@ public class SelectBatteryAndPowertrainSD {
         this.selectBatteryAndPowertrainAssert.assertValidateThatBatteryAndPowertrainPageIsOpenedWithPricePrice(price);
     }
 
-    @Then("^Select button for Extended Range Battery - AWD is clicked$")
-    public void selectButtonForExtendedRangeBatteryAWDIsClicked() {
+    @Then("^Select button for Extended Range Battery - (.+) is clicked$")
+    public void selectButtonForExtendedRangeBatteryAWDIsClicked(String text) {
         this.selectBatteryAndPowertrainPage.selectItem(
-                "Extended Range Battery - AWD",
+                text,
                 this.selectBatteryAndPowertrainPage.getContainerItemPowertrain(),
                 this.selectBatteryAndPowertrainPage.getHeaderH2Powertrain(),
                 this.selectBatteryAndPowertrainPage.getBtnSelectPowertrain(),
                 this.selectBatteryAndPowertrainPage.getBtnNextPowertrain()
 
         );
+        this.selectBatteryAndPowertrainPage.scrollDown("");
     }
 }

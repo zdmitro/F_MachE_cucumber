@@ -108,14 +108,14 @@ public abstract class BasePage {
         js.executeScript("window.scrollBy(" + from + ", " + to + ")");
     }
 
-    public void scrollDown(String from) {
+    public void scrollDown() {
         JavascriptExecutor js = (JavascriptExecutor) SharedSD.getDriver();
-        js.executeScript("window.scrollBy(" + from + ", document.body.scrollHeight)");
+        js.executeScript("window.scrollBy(0,2000)", "");
     }
 
-    public void scrollUp(String from) {
+    public void scrollUp() {
         JavascriptExecutor js = (JavascriptExecutor) SharedSD.getDriver();
-        js.executeScript("window.scrollBy(" + from + ", -document.body.scrollHeight)");
+        js.executeScript("window.scrollBy(0,2000)", "");
     }
 
     public void scrollElement(By elementBy) {

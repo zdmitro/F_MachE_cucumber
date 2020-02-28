@@ -21,7 +21,7 @@ public class SelectBatteryAndPowertrainPage extends BasePage {
 //    attributeValue is some variable text on the page, including the price
     private final By attributeValue = By.className("ProductTile__AttributeValue-sc-8r7rba-14");
 //    Select Button for GT Trim -> Select Battery and Powertrain
-    private final By btnSelectPowertrain = By.className("Button__ButtonCommon-sc-5scy24-0 ProductTile__ProductTileButton-sc-8r7rba-16");
+    private final By btnSelectPowertrain = By.className("Button__ButtonCommon-sc-5scy24-0");
 
     private final By containerItemPowertrain = By.className("ProductTileSection__ProductTileSectionInner-sc-1a04xx1-8");
 
