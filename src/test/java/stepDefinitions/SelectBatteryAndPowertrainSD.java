@@ -2,7 +2,6 @@ package stepDefinitions;
 
 import asserts.SelectBatteryAndPowertrainAssert;
 import asserts.SelectMachEModelAssert;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import pageObjects.SelectBatteryAndPowertrainPage;
 import pageObjects.SelectMachEModelPage;
@@ -40,6 +39,6 @@ public class SelectBatteryAndPowertrainSD {
                 this.selectBatteryAndPowertrainPage.getBtnNextPowertrain()
 
         );
-        this.selectBatteryAndPowertrainPage.scrollDown("");
+        //this.selectBatteryAndPowertrainPage.scrollDown("123");
     }
 }
