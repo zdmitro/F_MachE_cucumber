@@ -184,6 +184,11 @@ public abstract class BasePage {
         return SharedSD.getDriver().findElements(elementBy);
     }
 
+    public List<WebElement> getItemsByClassNameStr(String className) {
+        //waitVisibility(elementBy);
+        return SharedSD.getDriver().findElements(By.className(className));
+    }
+
     public void selectItem(String trim, By elementByClassName, By itemHeader, By btnSelect, By btnNext) {
 
         try {
@@ -233,6 +238,12 @@ public abstract class BasePage {
         webElement.findElement(btnSelect).click();
     }
 
+    public List<WebElement> getElementsByTag(String tag) {
+        return SharedSD.getDriver().findElements(By.tagName(tag));
+    }
 
+    public List<WebElement> getElementsByText(String text) {
+        return SharedSD.getDriver().findElements(By.xpath("//*[text() = '" + text + "']"));
+    }
 
 }

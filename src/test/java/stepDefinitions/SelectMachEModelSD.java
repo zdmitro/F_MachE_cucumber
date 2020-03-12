@@ -1,11 +1,9 @@
 package stepDefinitions;
 
 import asserts.SelectMachEModelAssert;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pageObjects.SelectBatteryAndPowertrainPage;
@@ -13,7 +11,6 @@ import pageObjects.SelectMachEModelPage;
 import utils.PropertiesReader;
 
 import java.util.List;
-import java.util.Optional;
 
 import static java.lang.Thread.sleep;
 
@@ -107,5 +104,20 @@ public class SelectMachEModelSD {
     public void validateThatAllElementsArePresentOnTheTopBar() {
         this.selectMachEModelAssert.validateThatAllElementsArePresentOnTheTopBar();
 
+    }
+
+    @Then("^Verify styles for (.+) trim$")
+    public void verifyStylesForTrimTrim(String trim) {
+        List<WebElement> elementList = this.selectMachEModelPage.getItemsByClassName(this.selectMachEModelPage.getProductContainerItem());//.get(0).findElement(By.xpath("//*[text() = '" + trim + "']"));
+        WebElement webElement = elementList
+                .stream()
+                .filter(e -> e.getText().contains(trim + "\n"))
+                .findFirst()
+                .orElse(null);
+
+        assert webElement != null;
+
+        this.selectMachEModelAssert.assertStyleValue(webElement.findElement(By.tagName("h2")), "font-size", "24px");
+        this.selectMachEModelAssert.assertStyleValue(webElement.findElement(By.tagName("h2")), "color", "rgba(77, 77, 77, 1)");
     }
 }
