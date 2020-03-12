@@ -35,3 +35,14 @@ Feature: Testing of Select Mustang Mach-e Model Page
   Scenario: 9. Validate elemments in the top bar
     Given Select Mustang Mach-e Page is opened
     Then Validate that all elements are present on the top bar
+
+  Scenario Outline: 10. Verify trims styles
+    Given Select Mustang Mach-e Page is opened
+    Then Verify styles for <trim> trim
+
+    Examples:
+      | trim                    |
+#      | SELECT                  |
+      | PREMIUM                 |
+#      | CALIFORNIA RT.1 EDITION |
+#      | GT                      |

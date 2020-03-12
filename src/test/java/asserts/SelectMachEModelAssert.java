@@ -165,6 +165,10 @@ public class SelectMachEModelAssert {
 
     public void validateThatAllElementsArePresentOnTheTopBar() {
         List<WebElement> itemsFromContainer = this.selectMachEModelPage.getItemsFromContainer(this.selectMachEModelPage.getProductContainer(), this.selectMachEModelPage.getProductContainerItem());
+    }
 
+    public void assertStyleValue(WebElement element, String style, String styleValue) {
+        String cssValue = element.getCssValue(style);
+        Assert.assertEquals(styleValue, cssValue);
     }
 }
