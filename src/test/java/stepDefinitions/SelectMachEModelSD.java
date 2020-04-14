@@ -14,8 +14,6 @@ import utils.PropertiesReader;
 
 import java.util.List;
 
-import static java.lang.Thread.sleep;
-
 public class SelectMachEModelSD {
     private final PropertiesReader pr = new PropertiesReader();
     private final SelectMachEModelAssert selectMachEModelAssert = new SelectMachEModelAssert();
