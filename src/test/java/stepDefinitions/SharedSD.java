@@ -23,15 +23,12 @@ public class SharedSD {
         ops.addArguments("--disable-notifications");
         System.setProperty("webdriver.chrome.driver", pr.getChromeDriverPass());
         driver = new ChromeDriver();
-
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
-//        Dimension d = new Dimension(960,1080);
-        //Resize current window to the set dimension
-//        driver.manage().window().setSize(d);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
-        driver.get(pr.getUrl());
+        //driver.get(pr.getUrl());
+//        driver.get(pr.getUrlAuth());
 
     }
 

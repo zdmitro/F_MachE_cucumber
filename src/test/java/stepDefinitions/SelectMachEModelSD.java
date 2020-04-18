@@ -4,6 +4,8 @@ import asserts.SelectMachEModelAssert;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import expects.SelectMachEModelExpect;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pageObjects.SelectBatteryAndPowertrainPage;
@@ -12,13 +14,12 @@ import utils.PropertiesReader;
 
 import java.util.List;
 
-import static java.lang.Thread.sleep;
-
 public class SelectMachEModelSD {
     private final PropertiesReader pr = new PropertiesReader();
     private final SelectMachEModelAssert selectMachEModelAssert = new SelectMachEModelAssert();
     private final SelectMachEModelPage selectMachEModelPage = new SelectMachEModelPage();
     private final SelectBatteryAndPowertrainPage selectBatteryAndPowertrainPage = new SelectBatteryAndPowertrainPage();
+    private final SelectMachEModelExpect selectMachEModelExpect = new SelectMachEModelExpect();
 
     @Given("^Select Mustang Mach-e Page is opened$")
     public void SelectMachEModelPageIsOpened() {
@@ -27,7 +28,17 @@ public class SelectMachEModelSD {
 
     @Then("^Assert Select Model Page is Opened$")
     public void assertSelectModelPageIsOpened() {
-        this.selectMachEModelAssert.assertMachEModelTrim();
+        String color = this.selectMachEModelPage.getCSSValue(
+                this.selectMachEModelPage.getHeaderSelect(), "color");
+
+        String cursor = this.selectMachEModelPage.getCSSValue(
+                this.selectMachEModelPage.getHeaderSelect(), "cursor");
+
+        Assert.assertEquals(this.selectMachEModelExpect.getHeaderSelect_color(), color);
+        Assert.assertEquals(this.selectMachEModelExpect.getHeaderSelect_cursor(), cursor);
+
+
+        //this.selectMachEModelAssert.assertMachEModelTrim();
     }
 
     @Then("^Assert Elements Are Present in the Body$")
