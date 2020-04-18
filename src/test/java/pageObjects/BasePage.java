@@ -165,6 +165,7 @@ public abstract class BasePage {
                 System.out.println(e + " - not found");
                 isElementDisplayed = false;
                 //break
+
             }
         }
         Assert.assertTrue(isElementDisplayed);
