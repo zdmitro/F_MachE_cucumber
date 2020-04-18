@@ -31,6 +31,9 @@ public class SelectBatteryAndPowertrainSD {
 
     @Then("^Select button for Extended Range Battery - (.+) is clicked$")
     public void selectButtonForExtendedRangeBatteryAWDIsClicked(String text) {
+
+        //this.selectBatteryAndPowertrainPage.switchTabsUsingPartOfUrl("youtube.com");
+
         this.selectBatteryAndPowertrainPage.selectItem(
                 text,
                 this.selectBatteryAndPowertrainPage.getContainerItemPowertrain(),

@@ -12,6 +12,7 @@ import utils.PropertiesReader;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 public abstract class BasePage {
 
@@ -36,7 +37,7 @@ public abstract class BasePage {
     }
 
     public void clickByJSE(By elementBy) {
-        JavascriptExecutor executor = (JavascriptExecutor)SharedSD.getDriver();
+        JavascriptExecutor executor = (JavascriptExecutor) SharedSD.getDriver();
         executor.executeScript("arguments[0].click();", elementBy);
     }
 
@@ -184,6 +185,11 @@ public abstract class BasePage {
         return SharedSD.getDriver().findElements(elementBy);
     }
 
+    public List<WebElement> getItemsByClassNameStr(String className) {
+        //waitVisibility(elementBy);
+        return SharedSD.getDriver().findElements(By.className(className));
+    }
+
     public void selectItem(String trim, By elementByClassName, By itemHeader, By btnSelect, By btnNext) {
 
         try {
@@ -233,6 +239,62 @@ public abstract class BasePage {
         webElement.findElement(btnSelect).click();
     }
 
+    public List<WebElement> getElementsByTag(String tag) {
+        return SharedSD.getDriver().findElements(By.tagName(tag));
+    }
 
+    public List<WebElement> getElementsByText(String text) {
+        return SharedSD.getDriver().findElements(By.xpath("//*[text() = '" + text + "']"));
+    }
+
+    public void switchTabsUsingPartOfUrl(String platform) {
+        String currentHandle = "";
+        String currentURL = "";
+        try {
+            final Set<String> handles = SharedSD.getDriver().getWindowHandles();
+            if (handles.size() > 1) {
+                currentHandle = SharedSD.getDriver().getWindowHandle();
+            }
+            if (currentHandle != null) {
+
+
+
+                for (final String handle : handles) {
+                    SharedSD.getDriver().switchTo().window(handle);
+                    currentURL = SharedSD.getDriver().getCurrentUrl();
+                    if (currentURL.contains(platform)) {
+                        break;
+                    }
+                }
+            } else {
+                for (final String handle : handles) {
+                    SharedSD.getDriver().switchTo().window(handle);
+                    if (currentURL.contains(platform)) {
+                        break;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Switching tabs failed");
+        }
+        currentURL = null;
+    }
+
+    public void switchToNewTab() {
+        try {
+
+            Set<String> tab_handles = SharedSD.getDriver().getWindowHandles();
+            int number_of_tabs = tab_handles.size();
+            int new_tab_index = number_of_tabs - 1;
+            SharedSD.getDriver().switchTo().window(tab_handles.toArray()[new_tab_index].toString());
+
+        } catch (Exception e) {
+            System.out.println("Switching tabs failed");
+        }
+    }
+
+    public String getCSSValue(By element, String style) {
+        return SharedSD.getDriver().findElement(element).getCssValue(style);
+    }
 
 }
