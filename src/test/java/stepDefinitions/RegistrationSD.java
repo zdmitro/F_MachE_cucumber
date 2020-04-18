@@ -23,7 +23,7 @@ public class RegistrationSD {
     @Given("^Select Auth Page is opened$")
     public void SelectAuthPageIsOpened() {
         SharedSD.getDriver().get(pr.getUrlAuth());
-        //this.asserts.assertAuthPageIsOpened();
+        this.asserts.assertAuthPageIsOpened();
     }
 
     @Then("^Execute registration with 'Firs name' (.+), 'Last name' (.+), 'Email' (.+), 'password' (.+)$")
