@@ -29,4 +29,5 @@ public class RegistrationPage extends BasePage {
     public By getSubmitBtn() {
         return submitBtn;
     }
+
 }
